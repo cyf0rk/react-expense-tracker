@@ -1,0 +1,41 @@
+.expense-form {
+  display: flex;
+  flex-direction: row;
+}
+
+.new-expense__controls {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.new-expense__control {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 7px 0;
+  font-size: 1.3rem;
+}
+
+.new-expense__control input {
+  margin: 7px 0;
+  font-size: 1.2rem;
+  max-width: 300px;
+  height: 30px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.new-expense__actions {
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.new-expense__actions button {
+  height: 50px;
+  background-color: #40005d;
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+}

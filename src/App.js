@@ -1,6 +1,10 @@
-import ExpenseItem from './components/Expenses/ExpenseItem';
+import NewExpense from './components/NewExpense/NewExpense';
+import Expenses from './components/Expenses/Expenses';
+import { useState } from 'react';
 
 function App() {
+  const [newExpenseData, addNewExpense] = useState();
+
   const expenses = [
     {
       title: 'Car Insurance',
@@ -19,24 +23,20 @@ function App() {
     },
   ];
 
+  const createNewExpense = (expenseData) => {
+    addNewExpense(expenseData);
+  };
+
+  const testFunc = () => {
+    console.log(newExpenseData);
+  };
+
   return (
-    <div>
+    <div className='app-container'>
       <h2>Expense Tracker</h2>
-      <ExpenseItem
-        title={expenses[0].title}
-        amount={expenses[0].amount}
-        date={expenses[0].date}
-      />
-      <ExpenseItem
-        title={expenses[1].title}
-        amount={expenses[1].amount}
-        date={expenses[1].date}
-      />
-      <ExpenseItem
-        title={expenses[2].title}
-        amount={expenses[2].amount}
-        date={expenses[2].date}
-      />
+      <NewExpense sendData={createNewExpense} />
+      <Expenses items={expenses} />
+      <button onClick={testFunc}>click me</button>
     </div>
   );
 }
