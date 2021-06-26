@@ -13,7 +13,6 @@
   gap: 1rem;
   align-items: flex-end;
   flex-flow: column-reverse;
-  justify-content: flex-start;
   flex: 1;
 }
 

@@ -2,41 +2,40 @@ import NewExpense from './components/NewExpense/NewExpense';
 import Expenses from './components/Expenses/Expenses';
 import { useState } from 'react';
 
+import './App.css';
+
+const INITIAL_EXPENSES = [
+  {
+    id: 'e1',
+    title: 'Car Insurance',
+    amount: 297.38,
+    date: new Date(2020, 2, 18),
+  },
+  {
+    id: 'e2',
+    title: 'Some other item',
+    amount: 120.23,
+    date: new Date(2019, 3, 1),
+  },
+  {
+    id: 'e3',
+    title: 'Another One',
+    amount: 32.23,
+    date: new Date(2020, 4, 29),
+  },
+];
+
 function App() {
-  const [newExpenseData, addNewExpense] = useState();
+  const [expenses, addNewExpense] = useState(INITIAL_EXPENSES);
 
-  const expenses = [
-    {
-      title: 'Car Insurance',
-      amount: 297.38,
-      date: new Date(),
-    },
-    {
-      title: 'Some other item',
-      amount: 120.23,
-      date: new Date(),
-    },
-    {
-      title: 'Another One',
-      amount: 32.23,
-      date: new Date(),
-    },
-  ];
-
-  const createNewExpense = (expenseData) => {
-    addNewExpense(expenseData);
-  };
-
-  const testFunc = () => {
-    console.log(newExpenseData);
+  const createExpenseHandler = (expense) => {
+    addNewExpense((prevExpenses) => [expense, ...prevExpenses]);
   };
 
   return (
     <div className='app-container'>
-      <h2>Expense Tracker</h2>
-      <NewExpense sendData={createNewExpense} />
+      <NewExpense onSendExpenseData={createExpenseHandler} />
       <Expenses items={expenses} />
-      <button onClick={testFunc}>click me</button>
     </div>
   );
 }
